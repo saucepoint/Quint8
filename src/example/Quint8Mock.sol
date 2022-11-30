@@ -25,6 +25,21 @@ contract Quint8Mock {
         return data;
     }
 
+    function yoUhhHmm() external pure {
+        // Strictly in-memory queue example
+        Queue memory inMemoryQueue;
+        inMemoryQueue = inMemoryQueue.enqueue(1);
+        inMemoryQueue = inMemoryQueue.enqueue(2);
+        inMemoryQueue = inMemoryQueue.enqueue(3);
+        inMemoryQueue = inMemoryQueue.enqueue(4);
+        inMemoryQueue = inMemoryQueue.enqueue(5);
+        (inMemoryQueue,) = inMemoryQueue.dequeue();
+        (inMemoryQueue,) = inMemoryQueue.dequeue();
+        (inMemoryQueue,) = inMemoryQueue.dequeue();
+        (inMemoryQueue,) = inMemoryQueue.dequeue();
+        (inMemoryQueue,) = inMemoryQueue.dequeue();
+    }
+
     function size() external view returns (uint256) {
         return queue.count;
     }
