@@ -1,5 +1,5 @@
 Compiling 3 files with 0.8.15
-Solc 0.8.15 finished in 233.87ms
+Solc 0.8.15 finished in 228.73ms
 Compiler run successful
 
 Running 8 tests for test/Queue.t.sol:QueueTest
@@ -11,7 +11,7 @@ Running 8 tests for test/Queue.t.sol:QueueTest
 [32m[PASS][0m testEnqueue() (gas: 150292)
 [32m[PASS][0m testLastFirst() (gas: 73792)
 [32m[PASS][0m testLastFirstWithMultipleOps() (gas: 59232)
-Test result: [32mok[0m. 8 passed; 0 failed; finished in 8.89ms
+Test result: [32mok[0m. 8 passed; 0 failed; finished in 6.93ms
 
 Running 10 tests for test/Quint8.t.sol:Quint8Test
 [32m[PASS][0m testCannotDequeueWhenStoreIsEmpty1() (gas: 19543)
@@ -24,7 +24,7 @@ Running 10 tests for test/Quint8.t.sol:Quint8Test
 [32m[PASS][0m testFullQueueExact() (gas: 911589)
 [32m[PASS][0m testTwoPageExact() (gas: 483934)
 [32m[PASS][0m testWrapAround() (gas: 1446455)
-Test result: [32mok[0m. 10 passed; 0 failed; finished in 8.98ms
+Test result: [32mok[0m. 10 passed; 0 failed; finished in 6.86ms
 ╭──────────────────────────────┬─────────────────┬───────┬────────┬───────┬─────────╮
 │ src/Queue.sol:Queue contract ┆                 ┆       ┆        ┆       ┆         │
 ╞══════════════════════════════╪═════════════════╪═══════╪════════╪═══════╪═════════╡
