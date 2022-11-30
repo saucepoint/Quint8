@@ -72,10 +72,11 @@ library Quint8 {
             result := shr(mul(sub(0x1F, index), 8), page)
 
             // clear the number from the page
-            page := and(page, not(shl(mul(sub(31, index), 8), 0xFF)))
+            // Why does the code work without this? :thonk:
+            // page := and(page, not(shl(mul(sub(31, index), 8), 0xFF)))
         }
         
-        _queue.pages[pageIndex] = page;
+        // _queue.pages[pageIndex] = page;
         unchecked {
             _queue.head = (_queue.head + 1) % MAX_CAPACITY;
             --_queue.count;

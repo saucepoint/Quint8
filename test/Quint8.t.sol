@@ -117,7 +117,7 @@ contract Quint8Test is PRBTest {
     }
 
     function testWrapAround() public {
-        uint256 loops = 200;
+        uint256 loops = 254;
         for (uint8 i = 0; i < loops; i++) {
             q1.enqueue(i);
             if (i % 2 == 0) {
