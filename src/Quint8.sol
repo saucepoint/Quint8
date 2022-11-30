@@ -15,7 +15,6 @@ library Quint8 {
         require(count < MAX_CAPACITY, "Queue is full");
         
         bytes32 page = _queue.pages[count / 32];
-        uint256 index = count % 32;
 
         bytes32 insertion;
         assembly {
@@ -27,7 +26,8 @@ library Quint8 {
             // page = 0x11_22_33_44_55_00_..._00 // insert via OR
             // ```
 
-            // num << ((31 - index) * 8)
+            // num << ((31 - index) * 8) // (inserting at index=0 means we should left shift by 248 bits)
+            let index := mod(count, 32)
             insertion := shl(mul(sub(0x1F, index), 8), num)
             page := or(page, insertion)
         }
