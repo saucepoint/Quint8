@@ -4,7 +4,8 @@ pragma solidity >=0.8.11;
 /// max capacity 1024 uint8s
 struct Queue {
     bytes32[4] pages;
-    uint256 count;
+    uint128 head;
+    uint128 count;
 }
 
 library Quint8 {
@@ -38,14 +39,24 @@ library Quint8 {
     }
 
     function dequeue(Queue memory _queue) internal pure returns (Queue memory, uint8) {
-        bytes32 head = _queue.pages[0];
-        uint8 result;
-        assembly {            
-            result := shr(248, head)
-            head := shl(8, head)
-        }
-        _queue.pages[0] = head;
+        uint128 head = _queue.head;
+        uint128 pageIndex;
         unchecked {
+            pageIndex = _queue.head / 32;
+        }
+
+        bytes32 page = _queue.pages[pageIndex];
+        uint8 result;
+        
+        assembly {
+            let index := mod(head, 32)
+            result := shr(mul(sub(0x1F, index), 8), page)
+            //page := shl(8, page)
+        }
+        
+        //_queue.pages[pageIndex] = page;
+        unchecked {
+            ++_queue.head;
             --_queue.count;
         }
         return (_queue, result);
