@@ -41,16 +41,8 @@ contract Quint8Test is PRBTest {
         assertEq(q1.dequeue(), 1); //at this point the queue is empty
     }
 
-    function testFoo() public {
-        bytes32 data;
-        assembly {
-            data := shl(mul(0x1F, 8), 0xFF)
-        }
-        assertEq(data, 0xFF00000000000000000000000000000000000000000000000000000000000000);
-
-        assembly {
-            data := shl(mul(0x1E, 8), 0xFF)
-        }
-        assertEq(data, 0x00FF000000000000000000000000000000000000000000000000000000000000);
+    function testFive() public {
+        q1.yoUhhHmm();
+        assertEq(q1.size(), 0);
     }
 }
